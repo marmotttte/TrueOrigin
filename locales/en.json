@@ -1,0 +1,6 @@
+{
+  "requestPermission": "Requesting for camera permission...",
+  "noPermission": "No access to camera",
+  "scanAgain": "Tap to Scan Again",
+  "alignBarcode": "Align the barcode within the frame"
+}

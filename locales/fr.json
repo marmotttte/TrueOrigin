@@ -1,0 +1,6 @@
+{
+  "requestPermission": "Demande d'autorisation de la caméra...",
+  "noPermission": "Pas d'accès à la caméra",
+  "scanAgain": "Appuyez pour scanner à nouveau",
+  "alignBarcode": "Aligner le codebar dans l'image"
+}

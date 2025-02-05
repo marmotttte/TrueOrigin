@@ -1,0 +1,6 @@
+{
+  "requestPermission": "Solicitando permiso de la cámara...",
+  "noPermission": "Sin acceso a la cámara",
+  "scanAgain": "Toca para escanear de nuevo",
+  "alignBarcode": "Alinea el código de barras dentro del marco"
+}

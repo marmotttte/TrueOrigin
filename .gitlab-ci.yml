@@ -1,0 +1,72 @@
+image: node:18
+
+stages:
+  - build
+  - release
+
+variables:
+  EXPO_NO_INTERACTIVE: 1
+  NODE_OPTIONS: "--max-old-space-size=4096"
+  EXPO_TOKEN: "5mBrxxwdSWD1Vx40NcPj-ntwkTvlZpkUcYAjQqL7"
+  ANDROID_KEYSTORE_BASE64: "your_base64_keystore"
+  ANDROID_KEYSTORE_PASSWORD: "your_keystore_password"
+  ANDROID_KEY_ALIAS: "your_key_alias"
+  ANDROID_KEY_PASSWORD: "your_key_password"
+  GITLAB_ACCESS_TOKEN: "glpat-iYA1QG-wHT7WRzv2RGEf"
+  EAS_PROFILE: "production"
+  DOCKER_BUILDKIT: 1
+
+before_script:
+  - corepack enable
+  - yarn install
+  - npm install -g eas-cli
+  - eas login
+  - export TAG_NAME=$(git describe --tags --abbrev=0)
+  - echo "Building for tag $TAG_NAME"
+  - mkdir -p build
+  - echo "Setting up Docker environment for local build"
+
+build_android:
+  stage: build
+  script:
+    - echo "Building Android app..."
+    - eas build --platform android --profile $EAS_PROFILE --non-interactive --wait
+    - eas build:inspect --platform android --output=build/
+  artifacts:
+    paths:
+      - build/*.apk
+      - build/*.aab
+  only:
+    - tags
+
+build_ios:
+  stage: build
+  script:
+    - echo "Building iOS app..."
+    - eas build --platform ios --profile $EAS_PROFILE --non-interactive --wait
+    - eas build:inspect --platform ios --output=build/
+  artifacts:
+    paths:
+      - build/*.ipa
+  only:
+    - tags
+
+release:
+  stage: release
+  script:
+    - echo "Uploading to GitLab Releases..."
+    - |
+      curl --request POST --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" \
+           --form "name=Release $TAG_NAME" \
+           --form "tag_name=$TAG_NAME" \
+           --form "description=Build for $TAG_NAME" \
+           --form "assets[links][][name]=Android APK" \
+           --form "assets[links][][url]=${CI_PROJECT_URL}/-/jobs/${CI_JOB_ID}/artifacts/raw/build/app-release.apk" \
+           --form "assets[links][][name]=iOS IPA" \
+           --form "assets[links][][url]=${CI_PROJECT_URL}/-/jobs/${CI_JOB_ID}/artifacts/raw/build/app-release.ipa" \
+           "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/releases"
+  only:
+    - tags
+  dependencies:
+    - build_android
+    - build_ios

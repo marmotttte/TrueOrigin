@@ -3,7 +3,7 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "",
+      "package_name": "com.marmotte.trueorigin",
       "sha256_cert_fingerprints":
       ["5F:CB:E2:66:8C:AB:99:BB:D9:AD:B4:8E:E0:64:EB:46:B8:23:31:98:F2:57:38:44:74:72:FB:9E:8E:FA:7C:BD"]
     }

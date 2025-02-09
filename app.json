@@ -13,11 +13,13 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.marmotte.trueorigin",
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSCameraUsageDescription": "We need access to your camera to scan barcodes."
       }
     },
     "android": {
       "package": "com.marmotte.trueorigin",
+      "permissions": ["CAMERA"],
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"

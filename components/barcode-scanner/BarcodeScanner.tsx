@@ -46,18 +46,13 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = (
         onBarcodeScanned={scanned ? undefined : handleBarcodeScanned}
         barcodeScannerSettings={{
           barcodeTypes: [
-            "qr",
             "pdf417",
             "code39",
             "ean13",
-            "upc_a",
-            "upc_e",
             "code128",
             "itf14",
             "code93",
             "codabar",
-            "datamatrix",
-            "aztec",
           ],
         }}
         style={StyleSheet.absoluteFillObject}

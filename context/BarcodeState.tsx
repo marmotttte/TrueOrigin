@@ -2,7 +2,7 @@ import React, { createContext, useReducer, ReactNode, useEffect } from "react";
 import { BarcodeType, ScanningResult } from "expo-camera";
 import {
   checkOpenFoodFacts,
-  checkUpcDatabaseOrg,
+  checkUpcDatabaseOrg, checkUpcG1s,
   checkUPCItemDB,
 } from "@/Utils/BarcodeDataLookup";
 import { getCountryFromBarcode } from "@/components/barcode-scanner/barcodeCountryMap";
@@ -116,6 +116,22 @@ export const BarcodeProvider: React.FC<{ children: ReactNode }> = ({
 
       //Search online
 
+
+      try {
+        const response = await checkUpcG1s(upc);
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      }
+
+      return;
+
+      try {
+        const response = await checkUpcDatabaseOrg(upc);
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      }
       try {
         const openFoodResponse = await checkOpenFoodFacts(upc);
         if (openFoodResponse?.status === 1) {
@@ -165,12 +181,7 @@ export const BarcodeProvider: React.FC<{ children: ReactNode }> = ({
         console.error(error);
       }
 
-      try {
-        const response = await checkUpcDatabaseOrg(upc);
-        console.log(response);
-      } catch (error) {
-        console.error(error);
-      }
+
     };
 
     loadUpcData(state.scannedData.type as BarcodeType, state.scannedData.data);

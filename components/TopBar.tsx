@@ -1,7 +1,8 @@
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+
 import React from "react";
 import { StatusBar, Platform, StyleSheet } from "react-native";
 import { AppBar } from "@react-native-material/core";
+import { Image } from 'react-native';
 
 interface AppBarProps {}
 
@@ -14,7 +15,8 @@ const TopBar = (props: AppBarProps) => {
         backgroundColor: "red", // Adjust padding for Android devices
       }}
       leading={(props) => (
-        <MaterialCommunityIcons name="barcode-scan" size={36} color="white" />
+
+          <Image source={require('../assets/images/icon.png')} style={{width: 36, height: 36}}  />
       )}
     />
   );

@@ -6,7 +6,7 @@ import BarcodeInfo from "@/components/barcode-scanner/BarcodeInfo";
 import { ThemedView } from "@/components/ThemedView";
 import { StyleSheet } from "react-native";
 
-const HomeScreen = () => {
+const IndexPage = () => {
   const { state: barcodeState, dispatch: barcodeDispatch } =
     useContext(BarcodeContext);
 
@@ -47,4 +47,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default IndexPage;

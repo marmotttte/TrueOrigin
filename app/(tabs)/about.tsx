@@ -2,7 +2,7 @@ import { Text, type TextProps, StyleSheet } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 
-export default function TabTwoScreen() {
+const AboutPage = () => {
   return (
     <ThemedView style={styles.container}>
       <ThemedText type="default">Made In Canada</ThemedText>
@@ -28,3 +28,5 @@ const styles = StyleSheet.create({
     padding: 20,
   },
 });
+
+export default AboutPage;

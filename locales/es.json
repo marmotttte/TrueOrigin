@@ -1,6 +1,11 @@
 {
+  "scanProduct": "Escanear producto",
+  "searchManufacturer": "Buscar fabricante",
   "requestPermission": "Solicitando permiso de la cámara...",
   "noPermission": "Sin acceso a la cámara",
   "scanAgain": "Toca para escanear de nuevo",
-  "alignBarcode": "Alinea el código de barras dentro del marco"
+  "alignBarcode": "Alinea el código de barras dentro del marco",
+  "abouttitle": "Acerca de True Origin",
+  "madeincanada": "Hecho en Canadá",
+  "about": "True Origin es una innovadora aplicación móvil diseñada para ayudarte a descubrir el origen de los productos con facilidad. Ya sea escaneando el código de barras de un producto o buscando el nombre del fabricante, True Origin te proporciona información detallada sobre el origen del producto, incluyendo su país de origen, su lugar de fabricación y mucho más. Con esta aplicación, puedes tomar decisiones más informadas sobre los productos que compras, apoyando tus preferencias y valores en cada paso."
 }

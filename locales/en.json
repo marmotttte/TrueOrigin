@@ -1,6 +1,11 @@
 {
+  "scanProduct": "Scan Product",
+  "searchManufacturer": "Search Manufacturer",
   "requestPermission": "Requesting for camera permission...",
   "noPermission": "No access to camera",
   "scanAgain": "Tap to Scan Again",
-  "alignBarcode": "Align the barcode within the frame"
+  "alignBarcode": "Align the barcode within the frame",
+  "abouttitle": "About ",
+  "madeincanada": "Made In Canada",
+  "about": "True Origin is an innovative mobile application designed to help you discover the origin of products with ease. Whether by scanning a product's barcode or searching for the manufacturer's name, True Origin provides you with detailed information about where the product comes from, including its country of origin, manufacturing location, and more. With this app, you can make more informed decisions about the products you purchase, supporting your preferences and values every step of the way."
 }

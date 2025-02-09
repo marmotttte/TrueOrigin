@@ -72,7 +72,7 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = (
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0.5,
+    flex: 0.4,
     width: "100%",
     justifyContent: "center",
     alignItems: "center",

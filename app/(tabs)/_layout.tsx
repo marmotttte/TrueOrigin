@@ -7,10 +7,12 @@ import TabBarBackground from "@/components/ui/TabBarBackground";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import Entypo from "@expo/vector-icons/Entypo";
+import {useTranslation} from "react-i18next";
 
 interface TabLayoutProps {}
 const TabLayout: React.FC<TabLayoutProps> = (props: TabLayoutProps) => {
   const colorScheme = useColorScheme();
+  const { t } = useTranslation();
 
   return (
     <Tabs
@@ -31,7 +33,7 @@ const TabLayout: React.FC<TabLayoutProps> = (props: TabLayoutProps) => {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Scan",
+          title:  t('scanProduct'),
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
               name="barcode-scan"
@@ -41,10 +43,23 @@ const TabLayout: React.FC<TabLayoutProps> = (props: TabLayoutProps) => {
           ),
         }}
       />
+        <Tabs.Screen
+            name="searchManufacturer"
+            options={{
+                title: t("searchManufacturer"),
+                tabBarIcon: ({ color }) => (
+                    <MaterialCommunityIcons
+                        name="factory"
+                        size={28}
+                        color={color}
+                    />
+                ),
+            }}
+        />
       <Tabs.Screen
         name="about"
         options={{
-          title: "About",
+          title: t('abouttitle'),
           tabBarIcon: ({ color }) => (
             <Entypo name="info-with-circle" size={28} color={color} />
           ),

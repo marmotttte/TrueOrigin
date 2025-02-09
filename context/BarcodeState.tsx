@@ -1,7 +1,8 @@
 import React, {createContext, useReducer, ReactNode, useEffect} from 'react';
 import {BarcodeType, ScanningResult} from "expo-camera";
-import {checkOpenFoodFacts, checkUPCItemDB} from "@/Utils/BarcodeDataLookup";
+import {checkOpenFoodFacts, checkUpcDatabaseOrg, checkUPCItemDB} from "@/Utils/BarcodeDataLookup";
 import {getCountryFromBarcode} from "@/components/barcode-scanner/barcodeCountryMap";
+
 
 // Define the shape of the state
 interface BarcodeState {
@@ -103,7 +104,7 @@ export const BarcodeProvider: React.FC<{ children: ReactNode }> = ({ children })
             try {
                 const openFoodResponse = await checkOpenFoodFacts(upc);
                 if (openFoodResponse?.status === 1) {
-                    //console.log(openFoodResponse.product)
+                    console.log(openFoodResponse.product)
                     const product = openFoodResponse?.product;
 
                     dispatch({
@@ -128,7 +129,7 @@ export const BarcodeProvider: React.FC<{ children: ReactNode }> = ({ children })
            try {
            const uPCItemDBResponse =  await checkUPCItemDB(upc);
            if (uPCItemDBResponse?.total > 0 && uPCItemDBResponse?.items != undefined) {
-               //console.log(uPCItemDBResponse?.items[0])
+               console.log(uPCItemDBResponse?.items[0])
                dispatch({
                    type: 'SET_SCANNED_PRODUCT',
                    payload: {
@@ -145,6 +146,14 @@ export const BarcodeProvider: React.FC<{ children: ReactNode }> = ({ children })
            }
             }
            catch (error) {
+               console.error(error);
+           }
+
+           try {
+
+                const response = await checkUpcDatabaseOrg(upc);
+                console.log(response)
+           } catch (error) {
                console.error(error);
            }
 

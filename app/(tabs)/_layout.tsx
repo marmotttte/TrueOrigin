@@ -15,9 +15,6 @@ const TabLayout: React.FC<TabLayoutProps> = (props: TabLayoutProps) =>  {
 
   const colorScheme = useColorScheme();
 
-    useEffect(() => {
-      console.log("")
-    }, []);
 
   return (
     <Tabs

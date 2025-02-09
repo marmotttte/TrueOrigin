@@ -1,9 +1,14 @@
-const barcodeCountryRanges: { start: number; end: number; country: string }[] = [
+const barcodeCountryRanges: { start: number; end: number; country: string }[] =
+  [
     { start: 0, end: 9, country: "Mostly United States but could be Canada" },
     { start: 10, end: 19, country: "Mostly Canada but could be United States" },
     { start: 20, end: 29, country: "Restricted distribution" },
     { start: 30, end: 39, country: "United States drugs (National Drug Code)" },
-    { start: 40, end: 49, country: "Used for restricted circulation within a region" },
+    {
+      start: 40,
+      end: 49,
+      country: "Used for restricted circulation within a region",
+    },
     { start: 50, end: 59, country: "Reserved for future use" },
     { start: 60, end: 99, country: "United States and Canada" },
     { start: 100, end: 139, country: "United States" },
@@ -64,16 +69,16 @@ const barcodeCountryRanges: { start: number; end: number; country: string }[] = 
     { start: 930, end: 939, country: "Australia" },
     { start: 940, end: 949, country: "New Zealand" },
     { start: 955, end: 955, country: "Malaysia" },
-    { start: 958, end: 958, country: "Macau" }
-];
+    { start: 958, end: 958, country: "Macau" },
+  ];
 
 export const getCountryFromBarcode = (barcode: string): string => {
-    if (barcode.length < 3) return "Invalid barcode";
+  if (barcode.length < 3) return "Invalid barcode";
 
-    const prefix = parseInt(barcode.substring(0, 3), 10);
-    const match = barcodeCountryRanges.find(
-        ({ start, end }) => prefix >= start && prefix <= end
-    );
+  const prefix = parseInt(barcode.substring(0, 3), 10);
+  const match = barcodeCountryRanges.find(
+    ({ start, end }) => prefix >= start && prefix <= end,
+  );
 
-    return match ? match.country : "Unknown country";
+  return match ? match.country : "Unknown country";
 };
